@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menú hamburguesa — Dystopia Workshop</title>
+  <meta name="description" content="Demo interactiva y documentada de 5 técnicas de animación para el botón hamburguesa: rotate+fade, squeeze+rotate, SVG morph, sutil+fade y spin 180°.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Dystopia Workshop">
+  <meta property="og:title" content="Menú hamburguesa — Dystopia Workshop">
+  <meta property="og:description" content="Demo interactiva y documentada de 5 técnicas de animación para el botón hamburguesa.">
+  <meta property="og:url" content="https://manuelfernandezdg.github.io/menuHamburguesa/">
+  <meta property="og:image" content="https://manuelfernandezdg.github.io/menuHamburguesa/assets/img/workshop-social.jpg">
+  <meta property="og:locale" content="es_AR">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Menú hamburguesa — Dystopia Workshop">
+  <meta name="twitter:description" content="Demo interactiva y documentada de 5 técnicas de animación para el botón hamburguesa.">
+  <meta name="twitter:image" content="https://manuelfernandezdg.github.io/menuHamburguesa/assets/img/workshop-social.jpg">
+  <link rel="icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="stylesheet" href="css/estilos.css?v=9">
+  <script src="js/app.js?v=9" defer></script>
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <div class="hero__stage">
+        <h1 class="hero__title" id="headline">Técnicas de botón hamburguesa</h1>
+        <p class="hero__text" id="lede">Cinco formas de animar la transición de ≡ a ✕. Hacé clic en cada botón para ver la transición. Debajo, las técnicas documentadas con su explicación y el código listo para copiar y pegar.</p>
+      </div>
+    </section>
+
+    <section class="demo" aria-label="Galería de técnicas">
+      <div class="demo__grid">
+        <article class="demo__card">
+          <span class="demo__tag">clásica</span>
+          <button class="demo__btn demo__btn--t1" id="b1" type="button" aria-label="Abrir menú" aria-expanded="false">
+            <span class="demo__lines">
+              <span class="demo__line demo__line--l1"></span>
+              <span class="demo__line demo__line--l2"></span>
+              <span class="demo__line demo__line--l3"></span>
+            </span>
+          </button>
+          <h2 class="demo__title">Rotate + fade</h2>
+          <p class="demo__desc">La línea del medio desaparece. Las otras rotan ±45° en su lugar.</p>
+        </article>
+
+        <article class="demo__card">
+          <span class="demo__tag">rebote</span>
+          <button class="demo__btn demo__btn--t2" id="b2" type="button" aria-label="Abrir menú" aria-expanded="false">
+            <span class="demo__lines">
+              <span class="demo__line demo__line--l1"></span>
+              <span class="demo__line demo__line--l2"></span>
+              <span class="demo__line demo__line--l3"></span>
+            </span>
+          </button>
+          <h2 class="demo__title">Rebote + rotate</h2>
+          <p class="demo__desc">Rebote elástico: las laterales giran con overshoot y encastran en la cruz.</p>
+        </article>
+
+        <article class="demo__card">
+          <span class="demo__tag">avanzada</span>
+          <button class="demo__btn demo__btn--t3" id="b3" type="button" aria-label="Abrir menú" aria-expanded="false">
+            <svg class="demo__svg" viewBox="0 0 28 28" aria-hidden="true">
+              <path class="demo__svg-path" id="p1" d="M5,8 L23,8"></path>
+              <path class="demo__svg-path" id="p2" d="M5,14 L23,14"></path>
+              <path class="demo__svg-path" id="p3" d="M5,20 L23,20"></path>
+            </svg>
+          </button>
+          <h2 class="demo__title">SVG path morph</h2>
+          <p class="demo__desc">Los paths se redibujan directamente de ≡ a ✕ con transición de coordenadas.</p>
+        </article>
+
+        <article class="demo__card">
+          <span class="demo__tag">asimétrica</span>
+          <button class="demo__btn demo__btn--t4" id="b4" type="button" aria-label="Abrir menú" aria-expanded="false">
+            <span class="demo__lines">
+              <span class="demo__line demo__line--l1"></span>
+              <span class="demo__line demo__line--l2"></span>
+              <span class="demo__line demo__line--l3"></span>
+            </span>
+          </button>
+          <h2 class="demo__title">Bisagra izquierda</h2>
+          <p class="demo__desc">Cruz con bisagra a la izquierda: las laterales giran desde el extremo, gesto asimétrico.</p>
+        </article>
+
+        <article class="demo__card">
+          <span class="demo__tag">expresiva</span>
+          <button class="demo__btn demo__btn--t5" id="b5" type="button" aria-label="Abrir menú" aria-expanded="false">
+            <span class="demo__wrap">
+              <span class="demo__lines">
+                <span class="demo__line demo__line--l1"></span>
+                <span class="demo__line demo__line--l2"></span>
+                <span class="demo__line demo__line--l3"></span>
+              </span>
+            </span>
+          </button>
+          <h2 class="demo__title">Spin 180°</h2>
+          <p class="demo__desc">El icono completo gira medio círculo mientras las líneas se transforman.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="doc" aria-label="Documentación de técnicas">
+      <nav class="tabs" role="tablist" aria-label="Técnicas documentadas">
+        <button class="tabs__item is-active" role="tab" aria-selected="true" aria-controls="tab-t1">Rotate + fade</button>
+        <button class="tabs__item" role="tab" aria-selected="false" aria-controls="tab-t2">Rebote + rotate</button>
+        <button class="tabs__item" role="tab" aria-selected="false" aria-controls="tab-t3">SVG path morph</button>
+        <button class="tabs__item" role="tab" aria-selected="false" aria-controls="tab-t4">Bisagra izquierda</button>
+        <button class="tabs__item" role="tab" aria-selected="false" aria-controls="tab-t5">Spin 180°</button>
+      </nav>
+
+      <div class="tabs__content">
+        <section class="tabs__panel is-active" id="tab-t1" role="tabpanel">
+          <p class="doc__intro">La más clásica y reconocida. Ideal para menús genéricos donde querés una transición directa y sin sorpresas.</p>
+          <div class="doc__demo">
+            <button class="demo__btn demo__btn--t1" id="d1" type="button" aria-label="Abrir menú" aria-expanded="false">
+              <span class="demo__lines">
+                <span class="demo__line demo__line--l1"></span>
+                <span class="demo__line demo__line--l2"></span>
+                <span class="demo__line demo__line--l3"></span>
+              </span>
+            </button>
+          </div>
+          <div class="doc__body">
+            <p>La línea central se desvanece (opacity 0 + scaleX 0) mientras las laterales suben y bajan hasta el centro y giran 45°. Como pivotan sobre su propio centro, quedan cruzadas justo en el medio del botón.</p>
+          </div>
+          <div class="code">
+            <div class="code__header"><span class="code__header-text">HTML</span><button class="code__copy" type="button">Copiar</button></div>
+            <pre class="code__pre">&lt;button class="btn btn--t1" type="button" aria-label="Abrir menú" aria-expanded="false"&gt;
+  &lt;span class="lines"&gt;
+    &lt;span class="line l1"&gt;&lt;/span&gt;
+    &lt;span class="line l2"&gt;&lt;/span&gt;
+    &lt;span class="line l3"&gt;&lt;/span&gt;
+  &lt;/span&gt;
+&lt;/button&gt;</pre>
+          </div>
+          <div class="code">
+            <div class="code__header"><span class="code__header-text">CSS</span><button class="code__copy" type="button">Copiar</button></div>
+            <pre class="code__pre">:root{
+  --bg:hsl(214,5%,11%);
+  --surface2:hsl(214,4%,5%);
+  --border:hsl(214,35%,22%);
+  --text:hsl(215,25%,85%);
+  --radius-sm:0.375rem;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+}
+
+.btn{
+  width:52px;
+  height:52px;
+  background:var(--surface2);
+  border:2px solid var(--border);
+  border-radius:var(--radius-sm);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.btn:hover{
+  border-color:hsl(22,100%,62%);
+}
+
+.lines{
+  position:relative;
+  width:22px;
+  height:22px;
+}
+
+.line{
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:22px;
+  height:2px;
+  background:var(--text);
+  border-radius:2px;
+  transform-origin:center;
+  transition-timing-function:cubic-bezier(.4,0,.2,1);
+}
+
+.btn--t1 .line{
+  transition:transform .3s,opacity .3s;
+}
+
+.btn--t1 .l1{
+  transform:translate(-50%,calc(-50% - 7px));
+}
+
+.btn--t1 .l2{
+  transform:translate(-50%,-50%);
+}
+
+.btn--t1 .l3{
+  transform:translate(-50%,calc(-50% + 7px));
+}
+
+.btn--t1.is-open .l1{
+  transform:translate(-50%,-50%) rotate(45deg);
+}
+
+.btn--t1.is-open .l2{
+  opacity:0;
+  transform:translate(-50%,-50%) scaleX(0);
+}
+
+.btn--t1.is-open .l3{
+  transform:translate(-50%,-50%) rotate(-45deg);
+}
+
+</pre>
+          </div>
+          <div class="code">
+            <div class="code__header"><span class="code__header-text">JS</span><button class="code__copy" type="button">Copiar</button></div>
+            <pre class="code__pre">const btn = document.querySelector('.btn--t1');
+btn.addEventListener('click', () => {
+  const open = btn.classList.toggle('is-open');
+  btn.setAttribute('aria-expanded', String(open));
+  btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+});</pre>
+          </div>
+        </section>
+
+        <section class="tabs__panel" id="tab-t2" role="tabpanel">
+          <p class="doc__intro">Variante con rebote: las laterales exageran el giro y vuelven a encastrar (easing con overshoot), un gesto más elástico que la clásica.</p>
+          <div class="doc__demo">
+            <button class="demo__btn demo__btn--t2" id="d2" type="button" aria-label="Abrir menú" aria-expanded="false">
+              <span class="demo__lines">
+                <span class="demo__line demo__line--l1"></span>
+                <span class="demo__line demo__line--l2"></span>
+                <span class="demo__line demo__line--l3"></span>
+              </span>
+            </button>
+          </div>
+          <div class="doc__body">
+            <p>Mismo resultado final (cruz centrada) pero con un easing de overshoot: las líneas pasan del ángulo objetivo y rebotan al encastrar, dándole un toque más vivo que la clásica.</p>
+          </div>
+          <div class="code">
+            <div class="code__header"><span class="code__header-text">HTML</span><button class="code__copy" type="button">Copiar</button></div>
+            <pre class="code__pre">&lt;button class="btn btn--t2" type="button" aria-label="Abrir menú" aria-expanded="false"&gt;
+  &lt;span class="lines"&gt;
+    &lt;span class="line l1"&gt;&lt;/span&gt;
+    &lt;span class="line l2"&gt;&lt;/span&gt;
+    &lt;span class="line l3"&gt;&lt;/span&gt;
+  &lt;/span&gt;
+&lt;/button&gt;</pre>
+          </div>
+          <div class="code">
+            <div class="code__header"><span class="code__header-text">CSS</span><button class="code__copy" type="button">Copiar</button></div>
+            <pre class="code__pre">:root{
+  --bg:hsl(214,5%,11%);
+  --surface2:hsl(214,4%,5%);
+  --border:hsl(214,35%,22%);
+  --text:hsl(215,25%,85%);
+  --radius-sm:0.375rem;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+}
+
+.btn{
+  width:52px;
+  height:52px;
+  background:var(--surface2);
+  border:2px solid var(--border);
+  border-radius:var(--radius-sm);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.btn:hover{
+  border-color:hsl(22,100%,62%);
+}
+
+.lines{
+  position:relative;
+  width:22px;
+  height:22px;
+}
+
+.line{
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:22px;
+  height:2px;
+  background:var(--text);
+  border-radius:2px;
+  transform-origin:center;
+  transition-timing-function:cubic-bezier(.4,0,.2,1);
+}
+
+.btn--t2 .line{
+  transition:transform .45s cubic-bezier(0.34,1.56,0.64,1),opacity .2s;
+}
+
+.btn--t2 .l1{
+  transform:translate(-50%,calc(-50% - 7px));
+}
+
+.btn--t2 .l2{
+  transform:translate(-50%,-50%);
+}
+
+.btn--t2 .l3{
+  transform:translate(-50%,calc(-50% + 7px));
+}
+
+.btn--t2.is-open .l1{
+  transform:translate(-50%,-50%) rotate(45deg);
+}
+
+.btn--t2.is-open .l2{
+  opacity:0;
+}
+
+.btn--t2.is-open .l3{
+  transform:translate(-50%,-50%) rotate(-45deg);
+}
+
+</pre>
+          </div>
+          <div class="code">
+            <div class="code__header"><span class="code__header-text">JS</span><button class="code__copy" type="button">Copiar</button></div>
+            <pre class="code__pre">const btn = document.querySelector('.btn--t2');
+btn.addEventListener('click', () => {
+  const open = btn.classList.toggle('is-open');
+  btn.setAttribute('aria-expanded', String(open));
+  btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+});</pre>
+          </div>
+        </section>
+
+        <section class="tabs__panel" id="tab-t3" role="tabpanel">
+          <p class="doc__intro">La más "premium". En lugar de tres barras, un único &lt;svg&gt; con tres paths que se redibujan de ≡ a ✕.</p>
+          <div class="doc__demo">
+            <button class="demo__btn demo__btn--t3" id="d3" type="button" aria-label="Abrir menú" aria-expanded="false">
+              <svg class="demo__svg" viewBox="0 0 28 28" aria-hidden="true">
+                <path class="demo__svg-path" d="M5,8 L23,8"></path>
+                <path class="demo__svg-path" d="M5,14 L23,14"></path>
+                <path class="demo__svg-path" d="M5,20 L23,20"></path>
+              </svg>
+            </button>
+          </div>
+          <div class="doc__body">
+            <p>La transición anima la propiedad CSS <code>d</code> de cada path (≡ → ✕). Clave: hay que asignarla vía <code>element.style.d = 'path(...)'</code>, no con <code>setAttribute</code>, para que el navegador la interpole. La línea central colapsa a un punto y se oculta con <code>opacity</code>.</p>
+          </div>
+          <div class="code">
+            <div class="code__header"><span class="code__header-text">HTML</span><button class="code__copy" type="button">Copiar</button></div>
+            <pre class="code__pre">&lt;button class="btn" type="button" aria-label="Abrir menú" aria-expanded="false"&gt;
+  &lt;svg class="svg" viewBox="0 0 28 28" aria-hidden="true"&gt;
+    &lt;path class="path" id="p1" d="M5,8 L23,8"&gt;&lt;/path&gt;
+    &lt;path class="path" id="p2" d="M5,14 L23,14"&gt;&lt;/path&gt;
+    &lt;path class="path" id="p3" d="M5,20 L23,20"&gt;&lt;/path&gt;
+  &lt;/svg&gt;
+&lt;/button&gt;</pre>
+          </div>
+          <div class="code">
+            <div class="code__header"><span class="code__header-text">CSS</span><button class="code__copy" type="button">Copiar</button></div>
+            <pre class="code__pre">:root{
+  --bg:hsl(214,5%,11%);
+  --surface2:hsl(214,4%,5%);
+  --border:hsl(214,35%,22%);
+  --text:hsl(215,25%,85%);
+  --radius-sm:0.375rem;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+}
+
+.btn{
+  width:52px;
+  height:52px;
+  background:var(--surface2);
+  border:2px solid var(--border);
+  border-radius:var(--radius-sm);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.btn:hover{
+  border-color:hsl(22,100%,62%);
+}
+
+.svg{
+  width:28px;
+  height:28px;
+  overflow:visible;
+}
+
+.path{
+  fill:none;
+  stroke:var(--text);
+  stroke-width:2;
+  stroke-linecap:round;
+  transition:d .4s cubic-bezier(.4,0,.2,1),opacity .3s;
+}
+
+</pre>
+          </div>
+          <div class="code">
+            <div class="code__header"><span class="code__header-text">JS</span><button class="code__copy" type="button">Copiar</button></div>
+            <pre class="code__pre">const btn = document.querySelector('.btn');
+const paths = btn.querySelectorAll('.path');
+const closed = ['M5,8 L23,8','M5,14 L23,14','M5,20 L23,20'];
+const open = ['M7,7 L21,21','M14,14 L14,14','M21,7 L7,21'];
+let isOpen = false;
+btn.addEventListener('click', () => {
+  isOpen = !isOpen;
+  paths.forEach((p, i) => {
+    p.style.d = 'path("' + (isOpen ? open[i] : closed[i]) + '")';
+    p.style.opacity = (isOpen &amp;&amp; i === 1) ? '0' : '1';
+  });
+  btn.setAttribute('aria-expanded', String(isOpen));
+  btn.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+});</pre>
+          </div>
+        </section>
+
+        <section class="tabs__panel" id="tab-t4" role="tabpanel">
+          <p class="doc__intro">La cruz se forma pivotando desde el extremo izquierdo: las laterales "balancan" desde esa bisagra en vez de girar sobre su centro.</p>
+          <div class="doc__demo">
+            <button class="demo__btn demo__btn--t4" id="d4" type="button" aria-label="Abrir menú" aria-expanded="false">
+              <span class="demo__lines">
+                <span class="demo__line demo__line--l1"></span>
+                <span class="demo__line demo__line--l2"></span>
+                <span class="demo__line demo__line--l3"></span>
+              </span>
+            </button>
+          </div>
+          <div class="doc__body">
+            <p>La línea central se difumina y las laterales rotan ±45°, pero con el pivote en su extremo izquierdo: la intersección queda en el borde, así el gesto es asimétrico en vez de simétrico.</p>
+          </div>
+          <div class="code">
+            <div class="code__header"><span class="code__header-text">HTML</span><button class="code__copy" type="button">Copiar</button></div>
+            <pre class="code__pre">&lt;button class="btn btn--t4" type="button" aria-label="Abrir menú" aria-expanded="false"&gt;
+  &lt;span class="lines"&gt;
+    &lt;span class="line l1"&gt;&lt;/span&gt;
+    &lt;span class="line l2"&gt;&lt;/span&gt;
+    &lt;span class="line l3"&gt;&lt;/span&gt;
+  &lt;/span&gt;
+&lt;/button&gt;</pre>
+          </div>
+          <div class="code">
+            <div class="code__header"><span class="code__header-text">CSS</span><button class="code__copy" type="button">Copiar</button></div>
+            <pre class="code__pre">:root{
+  --bg:hsl(214,5%,11%);
+  --surface2:hsl(214,4%,5%);
+  --border:hsl(214,35%,22%);
+  --text:hsl(215,25%,85%);
+  --radius-sm:0.375rem;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+}
+
+.btn{
+  width:52px;
+  height:52px;
+  background:var(--surface2);
+  border:2px solid var(--border);
+  border-radius:var(--radius-sm);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.btn:hover{
+  border-color:hsl(22,100%,62%);
+}
+
+.lines{
+  position:relative;
+  width:22px;
+  height:22px;
+}
+
+.line{
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:22px;
+  height:2px;
+  background:var(--text);
+  border-radius:2px;
+  transform-origin:center;
+  transition-timing-function:cubic-bezier(.4,0,.2,1);
+}
+
+.btn--t4 .line{
+  transition:transform .3s,opacity .3s;
+  transform-origin:0% 50%;
+}
+
+.btn--t4 .l1{
+  transform:translate(-50%,calc(-50% - 6px));
+}
+
+.btn--t4 .l2{
+  transform:translate(-50%,-50%);
+}
+
+.btn--t4 .l3{
+  transform:translate(-50%,calc(-50% + 6px));
+}
+
+.btn--t4.is-open .l1{
+  transform:translate(-50%,-50%) rotate(45deg);
+}
+
+.btn--t4.is-open .l2{
+  opacity:0;
+  transform:translate(-50%,-50%) scaleX(0);
+}
+
+.btn--t4.is-open .l3{
+  transform:translate(-50%,-50%) rotate(-45deg);
+}
+
+</pre>
+          </div>
+          <div class="code">
+            <div class="code__header"><span class="code__header-text">JS</span><button class="code__copy" type="button">Copiar</button></div>
+            <pre class="code__pre">const btn = document.querySelector('.btn--t4');
+btn.addEventListener('click', () => {
+  const open = btn.classList.toggle('is-open');
+  btn.setAttribute('aria-expanded', String(open));
+  btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+});</pre>
+          </div>
+        </section>
+
+        <section class="tabs__panel" id="tab-t5" role="tabpanel">
+          <p class="doc__intro">La más expresiva: todo el icono gira medio círculo mientras se transforma.</p>
+          <div class="doc__demo">
+            <button class="demo__btn demo__btn--t5" id="d5" type="button" aria-label="Abrir menú" aria-expanded="false">
+              <span class="demo__wrap">
+                <span class="demo__lines">
+                  <span class="demo__line demo__line--l1"></span>
+                  <span class="demo__line demo__line--l2"></span>
+                  <span class="demo__line demo__line--l3"></span>
+                </span>
+              </span>
+            </button>
+          </div>
+          <div class="doc__body">
+            <p>Un contenedor <code>.wrap</code> rota 180° (0.5s) y, al mismo tiempo, las líneas hacen la cruz. El giro suma energía sin cambiar el estado final.</p>
+          </div>
+          <div class="code">
+            <div class="code__header"><span class="code__header-text">HTML</span><button class="code__copy" type="button">Copiar</button></div>
+            <pre class="code__pre">&lt;button class="btn btn--t5" type="button" aria-label="Abrir menú" aria-expanded="false"&gt;
+  &lt;span class="wrap"&gt;
+    &lt;span class="lines"&gt;
+      &lt;span class="line l1"&gt;&lt;/span&gt;
+      &lt;span class="line l2"&gt;&lt;/span&gt;
+      &lt;span class="line l3"&gt;&lt;/span&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+&lt;/button&gt;</pre>
+          </div>
+          <div class="code">
+            <div class="code__header"><span class="code__header-text">CSS</span><button class="code__copy" type="button">Copiar</button></div>
+            <pre class="code__pre">:root{
+  --bg:hsl(214,5%,11%);
+  --surface2:hsl(214,4%,5%);
+  --border:hsl(214,35%,22%);
+  --text:hsl(215,25%,85%);
+  --radius-sm:0.375rem;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+}
+
+.btn{
+  width:52px;
+  height:52px;
+  background:var(--surface2);
+  border:2px solid var(--border);
+  border-radius:var(--radius-sm);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.btn:hover{
+  border-color:hsl(22,100%,62%);
+}
+
+.wrap{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:transform .5s cubic-bezier(.4,0,.2,1);
+}
+
+.lines{
+  position:relative;
+  width:22px;
+  height:22px;
+}
+
+.line{
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:22px;
+  height:2px;
+  background:var(--text);
+  border-radius:2px;
+  transform-origin:center;
+  transition-timing-function:cubic-bezier(.4,0,.2,1);
+}
+
+.btn--t5 .line{
+  transition:transform .35s,opacity .2s;
+}
+
+.btn--t5 .l1{
+  transform:translate(-50%,calc(-50% - 7px));
+}
+
+.btn--t5 .l2{
+  transform:translate(-50%,-50%);
+}
+
+.btn--t5 .l3{
+  transform:translate(-50%,calc(-50% + 7px));
+}
+
+.btn--t5.is-open .wrap{
+  transform:rotate(180deg);
+}
+
+.btn--t5.is-open .l1{
+  transform:translate(-50%,-50%) rotate(45deg);
+}
+
+.btn--t5.is-open .l2{
+  opacity:0;
+}
+
+.btn--t5.is-open .l3{
+  transform:translate(-50%,-50%) rotate(-45deg);
+}
+
+</pre>
+          </div>
+          <div class="code">
+            <div class="code__header"><span class="code__header-text">JS</span><button class="code__copy" type="button">Copiar</button></div>
+            <pre class="code__pre">const btn = document.querySelector('.btn--t5');
+btn.addEventListener('click', () => {
+  const open = btn.classList.toggle('is-open');
+  btn.setAttribute('aria-expanded', String(open));
+  btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+});</pre>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer app">
+    <div class="footer__brand">
+      <img class="footer__logo" src="assets/img/logo.jpg" alt="Logo de Dystopia Workshop">
+      <span class="footer__name">Dystopia Workshop</span>
+    </div>
+    <a class="footer__link" href="https://github.com/manuelfernandezdg/menuHamburguesa" target="_blank" rel="noopener noreferrer">github.com/manuelfernandezdg/menuHamburguesa</a>
+  </footer>
+</body>
+</html>
