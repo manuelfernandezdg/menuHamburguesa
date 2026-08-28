@@ -1,3 +1,12 @@
+# Menú hamburguesa
+
+Cinco formas de animar la transición del botón hamburguesa de ≡ a ✕, documentadas
+y listas para copiar y pegar. Cada técnica se muestra en una galería interactiva
+y, debajo, en una sección con tabs que explica el gesto y viene con su código
+(HTML / CSS / JS) autocontenido.
+
+**Ver en vivo:** https://manuelfernandezdg.github.io/menuHamburguesa/
+
 ## Técnicas
 
 | Técnica | Comportamiento |
